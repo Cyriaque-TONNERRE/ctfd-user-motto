@@ -66,7 +66,19 @@ class MottoSandbox(SandboxedEnvironment):
         "eval", "compile",
         # io / open
         "open", "fdopen",
-    })
+        # ─── AJOUT: prévention DoS ───
+        "kill", "killpg", "abort", "_exit",
+        "remove", "unlink", "rmdir", "removedirs",
+        "rename", "renames", "truncate", "ftruncate",
+        "chmod", "fchmod", "lchmod", "chown", "fchown", "lchown", "lchmod",
+        "putenv", "unsetenv",
+        "write", "writev", "pwrite", "pwritev",
+        "dup", "dup2",
+        "register_at_fork",
+        "chroot", "chdir", "fchdir",
+        "setuid", "setgid", "seteuid", "setegid", "setreuid", "setregid",
+        "setresuid", "setresgid", "getuid", "getgid", "geteuid", "getegid",
+        })
 
     def is_safe_attribute(self, obj, attr, value):
         if isinstance(attr, str) and attr.lower() in self.BLOCKED_ATTR_NAMES:
