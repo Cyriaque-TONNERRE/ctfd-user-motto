@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>My Motto</h1>
+    <p class="text-muted">
+        Set a personal motto for your profile. Supports Jinja2 templating
+        with access to your user data, e.g. <code>{{ '{{ user.name }}' }}</code>.
+    </p>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="motto">Your motto:</label>
+            <textarea
+                id="motto"
+                name="motto"
+                class="form-control"
+                rows="3"
+                maxlength="280"
+                placeholder="e.g. Hello, I'm {{ '{{ user.name }}' }}!"
+            >{{ current_motto }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save motto</button>
+    </form>
+
+    {% if rendered_motto %}
+    <hr>
+    <h3>Preview</h3>
+    <div class="card">
+        <div class="card-body">
+            {{ rendered_motto | safe }}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

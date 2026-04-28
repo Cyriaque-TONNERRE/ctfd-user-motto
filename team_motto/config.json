@@ -1,0 +1,8 @@
+{
+    "name": "User Motto",
+    "route": "/profile/motto",
+    "description": "Let users set a custom dynamic motto on their profile",
+    "version": "1.0.2",
+    "author": "ctf-org",
+    "compatibility": "CTFd >= 3.5.0"
+}
