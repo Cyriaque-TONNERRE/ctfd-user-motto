@@ -9,6 +9,7 @@
     </p>
 
     <form method="POST">
+        <input type="hidden" name="nonce" value="{{ Session.nonce }}">
         <div class="form-group">
             <label for="motto">Your motto:</label>
             <textarea
